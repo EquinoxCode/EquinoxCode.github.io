@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Made with Thimble</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div style="font-family: fantasy">
+    
+  
+    <h1>
+      My Awesome Circle
+    </h1>
+    <h2>
+      I do not think anybody will see this
+    </h2>
+    <canvas id="myCanvas"
+            width="500px"
+            height="500px"
+            style="border: 3px dashed purple">
+            </canvas>
+    <script>
+      
+      var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");   
+      var colors = ["red", "darkorange", "orange", "yellow", "lime", "green", "darkgreen", "teal", "blue", "darkblue", "violet", "purple", "pink"]
+      canvas.onclick = function(event) {
+        
+        
+        var rect = canvas.getBoundingClientRect();
+        var posx = event.clientX - rect.left;
+        var posys = event.clientY - rect.top;
+
+      for(var i = 0; i < 100; i++) {
+      context.beginPath();
+      context.arc(
+      Math.floor(Math.random()*500),
+        Math.floor(Math.random()*500),
+        Math.floor(Math.random()*100),
+        0, 2*Math.PI);  
+      context.stroke();
+        context.linewidth = 10
+        context.strokeStyle = colors[Math.floor(Math.random()*13)]
+      }
+      }
+      /* an arc starting at x = 21, y = 22 with radius 23, from angle 0 to 2 pi */ 
+    </script>
+  </div>
+  </body>
+</html>
