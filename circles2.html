@@ -1,0 +1,22 @@
+<html>
+
+<canvas id="mycanvas"
+          width="500px"
+          height="500px"
+          style="border: 10px dashed red">
+</canvas>
+
+<script>
+
+  var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2D");
+
+  context.beginPath();
+  context.arc(250, 250, 10, 0, MathPI*2);
+  context.fillStyle = "green";
+  context.fill();
+  context.closePath();
+
+  </script>
+
+  </html>
