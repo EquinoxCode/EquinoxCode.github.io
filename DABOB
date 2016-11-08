@@ -1,0 +1,85 @@
+<html>
+<style>
+html {
+	background-color: green;
+}
+</style>
+
+<h1>DABOB'S EPIC MEME (NOT FOR KIDS)</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<form>
+  First name:<br>
+  <input class="x" type="text" id="firstname" name = "firstname"><br>
+  Last name:<br>
+  <input class="x" type="text" name="lastname">
+</form>
+<button onclick="writeMyStory()">Submit</button>
+<br>
+
+<script>
+url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=ff20168398af0336f31ec634073a9303&units=imperial"
+
+$.getJSON(url, function(data) { console.log(data)})
+
+//the first we will do is generate a random number
+var randNum = Math.floor(Math.random()*10);
+//Challenge: write a function to generate a random integer
+
+//I want to generate random names
+//var studentList = ['Daniel', 'Bob', 'Tyler', 'Caitlin', 'Fahran', 'Jean', 'DABOB', 'Bill', 'I hate myself', 'Yo Mama', 'Annelissa', 'EvilSanta', 'EvilSanta']
+//How can I generate a random student from my list?
+//randStudent = studentList[Math.floor(Math.random()*13)]
+
+
+
+//Generate random picture
+
+
+
+function writeMyStory() {
+
+	var myStory = [
+   ' got 20 dislikes on his/her youtube profile. Then he/she exploded.',
+   ' crashed his/her $500,000 car.',
+   ' smokes cigars.',
+   ' got married and got divorced. Then got married again to a bobcat.',
+   ' made war with the north pole.',
+   ' had diarhia.',
+   ' dropped his/her ice cream cone and bawled',
+   ' did the disco and fell off the Empire State Building.',
+   ' did the whip with a real whip and whipped a horse.',
+   ' was forced to wear a diaper in public.',
+   ' got ditched by his/her friends.',
+   ' handled a nuclear missle.',
+   ' kissed a toad.',
+   ' built a WALL.',
+   ' got constipated.',
+   ' became Godzilla.',
+   ' crashed an airplane.',
+   ' needed to pee and did not know where the bathroom was',
+   ' fell from the sky.',
+   ' stole all of yo money.',
+   ' wore Donald Trump underwear.'] 
+var formfirst = document.getElementsByName("firstname")[0].value
+var formlast = document.getElementsByName("lastname")[0].value
+
+var randStory = myStory[Math.floor(Math.random()*myStory.length)]
+
+var myStory = formfirst + " " + formlast + randStory
+
+var style = "<style> html { background-color: green; font-size: 20px;} </style> "
+document.write( style +  myStory)
+}
+
+
+//Generate random
+
+</script>
+<style>
+html {
+	background-color: green;
+    font-size: 20px;
+	}
+</style>
+</html>
