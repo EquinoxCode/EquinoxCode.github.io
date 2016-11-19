@@ -1,0 +1,122 @@
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+
+<script>
+
+var population = ["Clinton", "Clinton", "Trump", "Clinton", "Clinton", "Trump", 
+"Trump", "Clinton", "Trump", "Trump", "Trump", "Clinton", "Clinton", 
+"Trump", "Clinton", "Clinton", "Clinton", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Trump", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Clinton", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Clinton", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Clinton", "Clinton", "Clinton", 
+"Trump", "Clinton", "Clinton", "Clinton", "Trump", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Clinton", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Trump", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Clinton", "Clinton", "Trump", 
+"Trump", "Clinton", "Trump", "Trump", "Clinton", "Trump", "Trump", 
+"Clinton", "Trump", "Clinton", "Clinton", "Clinton", "Trump", 
+"Clinton", "Clinton", "Clinton", "Trump", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Trump", "Clinton", "Clinton", "Trump", 
+"Clinton", "Clinton", "Clinton", "Trump", "Clinton", "Clinton", 
+"Clinton", "Clinton", "Trump", "Trump", "Clinton", "Clinton", 
+"Clinton", "Trump", "Trump", "Trump", "Trump", "Trump", "Clinton", 
+"Trump", "Trump", "Trump", "Clinton", "Clinton", "Trump", "Clinton", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Clinton", "Trump", "Clinton", "Trump", "Clinton", "Trump", "Clinton", 
+"Trump", "Clinton", "Clinton", "Clinton", "Clinton", "Trump", 
+"Clinton", "Clinton", "Trump", "Clinton", "Clinton", "Clinton", 
+"Trump", "Clinton", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Clinton", "Trump", "Clinton", 
+"Clinton", "Clinton", "Clinton", "Trump", "Clinton", "Trump", 
+"Clinton", "Trump", "Trump", "Clinton", "Trump", "Trump", "Trump", 
+"Clinton", "Trump", "Trump", "Trump", "Clinton", "Clinton", "Trump", 
+"Trump", "Clinton", "Clinton", "Clinton", "Trump", "Trump", "Trump", 
+"Clinton", "Trump", "Trump", "Trump", "Clinton", "Clinton", "Trump", 
+"Trump", "Trump", "Clinton", "Trump", "Clinton", "Trump", "Clinton", 
+"Clinton", "Trump", "Trump", "Trump", "Clinton", "Trump", "Trump", 
+"Clinton", "Trump", "Trump", "Trump", "Trump", "Trump", "Clinton", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Clinton", "Trump", "Trump", "Trump", "Trump", 
+"Clinton", "Trump", "Trump", "Trump", "Clinton", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Clinton", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Clinton", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump", "Trump", "Trump", "Trump", "Trump", 
+"Trump", "Clinton", "Trump", "Trump", "Clinton", "Trump", "Clinton", 
+"Trump", "Clinton", "Trump", "Clinton", "Trump", "Trump", "Trump", 
+"Trump", "Trump", "Trump"]
+
+// simulate what it's like to poll a random person
+// sample a random person from our population
+// this is the same code that you used to sample a random color from a list of colors
+//var randPerson = population[Math.floor(Math.random()*population.length)]
+//document.write(randPerson)
+
+// how can we survey 10 people and print out all of their answers?
+// hint: write a for loop
+// how can we count that many people will vote for Clinton or Trump?
+var ClintonCount= 0
+var TrumpCount = 0
+for (i = 0; i < 100; i++) {
+         var randPerson = population[Math.floor(Math.random()*population.length)]
+         if(randPerson == "Clinton"){
+	ClintonCount = ClintonCount + 1
+}     
+         if(randPerson == "Trump") {
+         	TrumpCount = TrumpCount + 1
+         } 
+
+ //document.write(randPerson)
+      // document.write("<br>")
+    }
+document.write("Clinton Count: " + ClintonCount)
+document.write("<br>")
+document.write("Trump Count: " + TrumpCount)
+
+// How can I project the winner based on my poll results?
+// Hint: use an if statement
+// I just want my poll to tell me who is my projected winner
+
+if (ClintonCount < TrumpCount) {
+	document.write("<br>")
+     document.write("Trump Wins!")
+}
+if (TrumpCount < ClintonCount) {
+	document.write("<br>")
+	document.write("Clinton Wins!")
+}
+if (TrumpCount == ClintonCount) {
+	document.write("<br>")
+	document.write("It's a tie!")
+}
+
+// get my canvas context and put a graph in it
+var context = document.getElementById("myChart").getContext("2d")
+var myPieChart = new Chart(context, {
+	type: 'bar',
+	data: {
+		labels: [
+		   "Clinton",
+		   "Trump"
+		   ],
+		datasets: [
+		  {
+			  data: [ClintonCount, TrumpCount],
+			  backgroundColor: ["blue", "red"]
+		  }
+
+	    ]
+	},
+	options: {
+		responsive: false
+	}
+});
+// Read the chart.js documentation to figure out how to make different plots, make our plots smaller, make different colors
+
+
+</script>
