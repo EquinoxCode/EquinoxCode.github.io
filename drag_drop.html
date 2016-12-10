@@ -1,0 +1,109 @@
+<html>
+
+<style>
+.pickobj{
+    padding: 10px;
+    background-color: grey;
+    border: 1px dashed black;
+}
+
+.pickbox {
+    float: left; 
+    width: 100px; 
+    height: 100px;
+    margin: 15px;
+    border: 1px solid black;
+}
+.dropbox {
+    float: left; 
+    width: 100px; 
+    height: 100px;
+    margin: 15px;
+    border: 1px dashed black;
+}
+
+.correct{
+    background-color: green;
+}
+
+.wrong{
+    background-color: red;
+}
+</style>
+
+<div class="pickbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p class="pickobj" 
+        ondragstart="dragStart(event)" 
+        draggable="true" 
+        id="dragtarget1" 
+        data="1">
+        1
+    </p>
+</div>
+
+<div class="pickbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p class="pickobj" 
+        ondragstart="dragStart(event)" 
+        draggable="true" 
+        id="dragtarget2" 
+        data="2">
+        2
+    </p>
+</div>
+
+<div class="dropbox" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        data="1">
+        One
+</div>
+<div class="dropbox" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        data="2">
+        Two
+</div>
+
+<script>
+function dragStart(event) {
+    event.dataTransfer.setData("id", event.target.id);
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var id = event.dataTransfer.getData("id");
+    var content = document.getElementById(id);
+    var dragval = content.getAttribute("data").valueOf();
+    var dropval = event.target.getAttribute("data").valueOf();
+
+    event.target.appendChild(content);
+
+    document.write("You've been hacked. Pay up $100 in 24 hours or else your computer will be wiped. We will be waiting...")
+
+    // let's write an if statement to test if the dragval is equal to the dropval, and if it is, we can print "Hurray"
+    if(dragval == dropval) {
+        window.alert("Hurray")
+        //or maybe you want to play a cheering sound
+
+        //or maybe you want to change class
+        content.setAttribute("class", "correct");
+     }
+
+// what should happen if I drag to the wrong box?
+if(dragval != dropval) {
+   window.alert("The following window does not have the information to continue.")
+    //alert boooo
+
+    // maybe play trombone sound
+    // change the class to wrong
+    content.setAttribute("class", "wrong")
+}
+event.target.appendChild(content);
+}
+</script>
+
+</html>
