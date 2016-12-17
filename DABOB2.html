@@ -1,0 +1,176 @@
+<html>
+
+<style>
+
+html {
+  background-color: red;
+    font-size: 20px;
+  }
+</style>
+
+<h1>DABOB'S EPIC MEME CHRISTMAS TIME(NOT FOR KIDS)</h1>
+<h1>(By a Kid)</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<form>
+  First name:<br>
+  <input class="x" type="text" id="firstname" name = "firstname"><br>
+  Last name:<br>
+  <input class="x" type="text" name="lastname">
+</form>
+
+<button onclick="writeMyStory()">Submit</button>
+<br>
+<br>
+
+<canvas id="myCanvas"
+          width="500px"
+          height="500px"
+          style="border: 10px dashed white">
+</canvas>
+
+
+<script>
+/*
+imageObj.onload = function() {
+        context.drawImage(imageObj, 69, 50);
+      };
+      imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+
+url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=ff20168398af0336f31ec634073a9303&units=imperial"
+
+$.getJSON(url, function(data) { console.log(data)})
+*/
+//the first we will do is generate a random number
+var randNum = Math.floor(Math.random()*10);
+//Challenge: write a function to generate a random integer
+
+//I want to generate random names
+//var studentList = ['Daniel', 'Bob', 'Tyler', 'Caitlin', 'Fahran', 'Jean', 'DABOB', 'Bill', 'I hate myself', 'Yo Mama', 'Annelissa', 'EvilSanta', 'EvilSanta']
+//How can I generate a random student from my list?
+//randStudent = studentList[Math.floor(Math.random()*13)]
+
+var santa1 = "http://vignette2.wikia.nocookie.net/pdsh/images/6/6b/Santa-reindeer-blog.png/revision/latest?cb=20130804223749" 
+
+//Generate random picture
+
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+  var words = text.split(' ');
+  var line = '';
+
+  for(var n = 0; n < words.length; n++) {
+    var testLine = line + words[n] + ' ';
+    var metrics = context.measureText(testLine);
+    var testWidth = metrics.width;
+    if (testWidth > maxWidth && n > 0) {
+      context.fillText(line, x, y);
+      line = words[n] + ' ';
+      y += lineHeight;
+    }
+    else {
+      line = testLine;
+    }
+  }
+  context.fillText(line, x, y);
+}
+      
+function writeMyStory() {
+
+	var myStory = [
+   ' played poker with Santa and lost a $100,000.',
+   ' crashed Santas $500,000 car and got fired and killed.',
+   ' smokes cigars with reindeer.',
+   ' got married and got divorced. Then got married again to a elf.',
+   ' made war with the north pole.',
+   ' got kicked by a reindeer.',
+   ' fought with candy-cane swords with Santa.',
+   ' stole a present.',
+   ' exploded the North Star.',
+   ' traveled back in time and saw Jesus.',
+   ' saw Santa in the shower and barfed.',
+   ' handled Santas sleigh.',
+   ' got on the naughty list.',
+   ' ate Santas gingerbread house.',
+   ' stole a present.',
+   ' had a Christmas tree that fell on top of her/him.',
+   ' got a cat for Christmas.',
+   ' only got clothes for Christmas.',
+   ' did not get a present this season.',
+   ' got stuck up the chimney.',
+   ' could not get their Christmas hat off.',
+   ' dressed up as Santa.',
+   ' got into a snowball fight.',
+   ', do not spend your time with family and friends. Ask them for presents then kill them.',
+   ', if you press the submit button one more time you are so gonna get hacked. Pay $100,000 in 24 hours.',
+   ', you psycho cat.',
+   ', be bad for Santa!',
+   ' found coal in their stocking.'] 
+  var formfirst = document.getElementsByName("firstname")[0].value
+  var formlast = document.getElementsByName("lastname")[0].value
+
+  var randStory = myStory[Math.floor(Math.random()*myStory.length)]
+
+  var myStory = formfirst + " " + formlast + randStory
+
+  var style = "<style> html { background-color: red; font-size: 20px;} </style> "
+  //document.write( style +  myStory)
+  console.log(myStory)
+ 
+  var img = ["http://www.mrwallpaper.com/wallpapers/Winter-Snowman-1920x1200.jpg", "http://vignette2.wikia.nocookie.net/pdsh/images/6/6b/Santa-reindeer-blog.png/revision/latest?cb=20130804223749", "http://i.dailymail.co.uk/i/pix/2012/12/11/article-2246540-1672D2C6000005DC-0_468x321.jpg", "http://wallpapercave.com/wp/4QLJInm.jpg","https://dsx.weather.com//util/image/v/COLORADO_SNOW_RAW_1641029734_mp4_video_1280x720_5000000_primary_audio_eng_5_1280x720_1641029739.jpg?v=at&w=485&h=273&api=7db9fe61-7414-47b5-9871-e17d87b8b6a0", "http://www.lovethispic.com/uploaded_images/38494-Red-Christmas-Ornaments.jpg", "http://media02.hongkiat.com/christmas_resources_03/crestock_Christmas_wallpapers.jpg", "http://www.mrwallpaper.com/wallpapers/Christmas-Cat.jpg", "http://www.cybervally.com/wp-content/uploads/2010/11/Widescreen-Christmas-17.jpg"]
+
+  var randimg = img[Math.floor(Math.random()*img.length)]
+  
+  base_image = new Image();
+  base_image.src = randimg;
+
+  base_image.onload = function() {
+    var c=document.getElementById("myCanvas");
+
+   // c.width = base_image.width
+
+    var context=c.getContext("2d");
+    if( randimg == "http://www.mrwallpaper.com/wallpapers/Winter-Snowman-1920x1200.jpg"){
+          context.drawImage(base_image, -1100, -400, base_image.width, base_image.height);
+    }
+    if( randimg == "http://vignette2.wikia.nocookie.net/pdsh/images/6/6b/Santa-reindeer-blog.png/revision/latest?cb=20130804223749"){
+      context.drawImage(base_image, 0, -230, base_image.width, base_image.height);
+    }
+    if( randimg == "http://i.dailymail.co.uk/i/pix/2012/12/11/article-2246540-1672D2C6000005DC-0_468x321.jpg"){
+      context.drawImage(base_image, -100, 0, 700, 500);
+    }
+    if( randimg == "http://wallpapercave.com/wp/4QLJInm.jpg"){
+      context.drawImage(base_image, -100, 0, 700, 500);
+    }
+    if( randimg == "https://dsx.weather.com//util/image/v/COLORADO_SNOW_RAW_1641029734_mp4_video_1280x720_5000000_primary_audio_eng_5_1280x720_1641029739.jpg?v=at&w=485&h=273&api=7db9fe61-7414-47b5-9871-e17d87b8b6a0"){
+      context.drawImage(base_image, -100, 0, 700, 500);
+    }
+    if( randimg == "http://www.lovethispic.com/uploaded_images/38494-Red-Christmas-Ornaments.jpg"){
+      context.drawImage(base_image, 0, 0, 700, 500)
+    }
+    if( randimg == "http://media02.hongkiat.com/christmas_resources_03/crestock_Christmas_wallpapers.jpg"){
+      context.drawImage(base_image, -200, 0, 700, 500)
+    }
+    if( randimg == "http://www.mrwallpaper.com/wallpapers/Christmas-Cat.jpg"){
+      context.drawImage(base_image, -200, 0, 700, 500)
+    }
+     if( randimg == "http://www.cybervally.com/wp-content/uploads/2010/11/Widescreen-Christmas-17.jpg"){
+      context.drawImage(base_image, 0, 0, 700, 500)
+    }
+
+    context.font="20px Georgia";
+    // context.fillText(myStory,10,50);
+
+    wrapText(context, myStory, 10, 30, c.width, 20);
+
+  }
+}
+
+//writeMyStory()
+
+
+
+//Generate random
+
+</script>
+
+</html>
